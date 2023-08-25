@@ -1,1 +1,2 @@
 1: Fri Aug 25 14:37:43 CEST 2023 ldziedziul-test-os: Create maintenance branch 5.3.z
+2: Fri Aug 25 14:37:43 CEST 2023 ldziedziul-test-os: Release 5.3.1
