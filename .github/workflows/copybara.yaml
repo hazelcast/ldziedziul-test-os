@@ -1,0 +1,20 @@
+on:
+  push:
+  pull_request_target:
+jobs:
+  move-code:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: ldziedziul/copybara-action@main
+        with:
+          ssh_key: ${{ secrets.GH_DEVOPSHAZELCAST_SSH_KEY }}
+          access_token: ${{ secrets.GH_TOKEN }}
+          sot_repo: hazelcast/ldziedziul-test-mono
+          destination_repo: hazelcast/ldziedziul-test-os
+          push_include: "os/** .github/workflows/copybara.yaml"
+          pr_move: |
+            ||os
+            os/.github||.github
