@@ -15,7 +15,6 @@ jobs:
           sot_repo: hazelcast/ldziedziul-test-mono
           destination_repo: hazelcast/ldziedziul-test-os
           push_include: "os/** .github/workflows/copybara.yaml"
-          copybara_options: "--init-history"
           pr_move: |
             ||os
             os/.github||.github
