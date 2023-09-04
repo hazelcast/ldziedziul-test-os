@@ -2,7 +2,7 @@ on:
   push:
   pull_request_target:
 jobs:
-  move-code:
+  copybara-os:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -14,7 +14,7 @@ jobs:
           access_token: ${{ secrets.GH_TOKEN }}
           sot_repo: hazelcast/ldziedziul-test-mono
           destination_repo: hazelcast/ldziedziul-test-os
-          push_include: "os/** .github/workflows/copybara.yaml"
+          push_include: "os/** .github/workflows/copybara-os.yaml"
           pr_move: |
             ||os
             os/.github||.github
