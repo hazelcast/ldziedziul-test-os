@@ -15,6 +15,7 @@ jobs:
           access_token: ${{ secrets.GH_TOKEN }}
           sot_repo: hazelcast/ldziedziul-test-mono
           destination_repo: hazelcast/ldziedziul-test-os
+          copybara_options: "--nogit-destination-rebase"
           push_include: "os/** .github/workflows/copybara-os.yaml"
           pr_move: |
             ||os
