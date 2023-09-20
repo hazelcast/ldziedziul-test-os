@@ -20,7 +20,7 @@ jobs:
           sot_repo: hazelcast/ldziedziul-test-mono
           sot_branch: ${{ matrix.branch }}
           destination_repo: hazelcast/ldziedziul-test-os
-          copybara_options: "--nogit-destination-rebase --init-history"
+          copybara_options: "--nogit-destination-rebase"
           push_include: "os/** .github/workflows/copybara-os.yaml"
           pr_move: |
             ||os
