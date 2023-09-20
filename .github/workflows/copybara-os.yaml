@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        branch: [ "master", "5.3.z", "5.2.z" ]
+        branch: [ "master" ]
     steps:
       - uses: actions/checkout@v2
         with:
