@@ -8,6 +8,8 @@ on:
       - "master"
       - "[0-9]+.[0-9]+.z"
   workflow_dispatch:
+env:
+  target_branch: ${{ github.base_ref || github.ref_name}}
 jobs:
   copybara-os:
     runs-on: ubuntu-latest
@@ -16,12 +18,12 @@ jobs:
         with:
           fetch-depth: 0
       - uses: ldziedziul/copybara-action@main
-        name: Copybara ${{ github.base_ref }}
+        name: Copybara ${{ env.target_branch }}
         with:
           ssh_key: ${{ secrets.GH_DEVOPSHAZELCAST_SSH_KEY }}
           access_token: ${{ secrets.GH_TOKEN }}
           sot_repo: hazelcast/ldziedziul-test-mono
-          sot_branch: ${{ github.base_ref }}
+          sot_branch: ${{ env.target_branch }}
           destination_repo: hazelcast/ldziedziul-test-os
           copybara_options: "--nogit-destination-rebase"
           push_include: "os/** .github/workflows/copybara-os.yaml"
