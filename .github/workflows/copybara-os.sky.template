@@ -29,6 +29,7 @@ core.workflow(
     destination = git.github_destination(
         url = DESTINATION_REPO,
         push = DESTINATION_BRANCH,
+        integrates = [git.integrate()],
     ),
     origin_files = glob(PUSH_INCLUDE, exclude = PUSH_EXCLUDE),
     authoring = authoring.pass_thru(default = COMMITTER),
