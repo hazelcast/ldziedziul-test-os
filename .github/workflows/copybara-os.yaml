@@ -17,16 +17,15 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
+      - name: Set target branch to ${{ env.target_branch }}
+        run: |
+          sed -e 's/SOT_BRANCH = "master"/SOT_BRANCH = "${{ env.target_branch }}"/' \
+              -e 's/DESTINATION_BRANCH = "master"/DESTINATION_BRANCH = "${{ env.target_branch }}"/' \
+              copy.bara-os.sky.template > copy.bara-os.sky
       - uses: ldziedziul/copybara-action@main
         name: Copybara ${{ env.target_branch }}
         with:
           ssh_key: ${{ secrets.GH_DEVOPSHAZELCAST_SSH_KEY }}
           access_token: ${{ secrets.GH_TOKEN }}
-          sot_repo: hazelcast/ldziedziul-test-mono
-          sot_branch: ${{ env.target_branch }}
-          destination_repo: hazelcast/ldziedziul-test-os
           copybara_options: "--nogit-destination-rebase"
-          push_include: "os/** .github/workflows/copybara-os.yaml"
-          pr_move: |
-            ||os
-            os/.github||.github
+          custom_config: copy.bara.sky
