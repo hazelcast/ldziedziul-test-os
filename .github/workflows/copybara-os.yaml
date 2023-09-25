@@ -28,4 +28,4 @@ jobs:
           ssh_key: ${{ secrets.GH_DEVOPSHAZELCAST_SSH_KEY }}
           access_token: ${{ secrets.GH_TOKEN }}
           copybara_options: "--nogit-destination-rebase"
-          custom_config: copy.bara.sky
+          custom_config: .github/workflows/copy.bara-os.sky
