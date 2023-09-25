@@ -64,5 +64,6 @@ core.workflow(
         metadata.save_author("ORIGINAL_AUTHOR"),
         metadata.expose_label("COPYBARA_INTEGRATE_REVIEW"),
         metadata.expose_label("GITHUB_PR_NUMBER", new_name = "Closes", separator = DESTINATION_REPO.replace("git@github.com:", " ").replace(".git", "#")),
+        metadata.squash_notes(prefix='Imported changes:\n\n',oldest_first = True)
     ] + PR_TRANSFORMATIONS,
 )
