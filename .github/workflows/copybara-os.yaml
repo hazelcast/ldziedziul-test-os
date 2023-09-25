@@ -21,7 +21,7 @@ jobs:
         run: |
           sed -e 's/SOT_BRANCH = "master"/SOT_BRANCH = "${{ env.target_branch }}"/' \
               -e 's/DESTINATION_BRANCH = "master"/DESTINATION_BRANCH = "${{ env.target_branch }}"/' \
-              .github/workflows/copy.bara-os.sky.template > .github/workflows/copy.bara-os.sky
+              .github/workflows/copybara-os.sky.template > .github/workflows/copybara-os.sky
       - uses: ldziedziul/copybara-action@main
         name: Copybara ${{ env.target_branch }}
         with:
