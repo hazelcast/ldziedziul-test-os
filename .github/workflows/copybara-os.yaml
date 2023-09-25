@@ -27,5 +27,7 @@ jobs:
         with:
           ssh_key: ${{ secrets.GH_DEVOPSHAZELCAST_SSH_KEY }}
           access_token: ${{ secrets.GH_TOKEN }}
+          sot_repo: hazelcast/ldziedziul-test-mono
+          destination_repo: hazelcast/ldziedziul-test-os
           copybara_options: "--nogit-destination-rebase"
           custom_config: .github/workflows/copy.bara-os.sky
