@@ -29,7 +29,6 @@ core.workflow(
     destination = git.github_destination(
         url = DESTINATION_REPO,
         push = DESTINATION_BRANCH,
-        integrates = [git.integrate()],
     ),
     origin_files = glob(PUSH_INCLUDE, exclude = PUSH_EXCLUDE),
     authoring = authoring.pass_thru(default = COMMITTER),
@@ -46,6 +45,8 @@ core.workflow(
     origin = git.github_pr_origin(
         url = DESTINATION_REPO,
         branch = DESTINATION_BRANCH,
+        #maybe to avoid --init-history
+        #baseline_from_branch = True,
     ),
     destination = git.github_pr_destination(
         url = SOT_REPO,
@@ -62,7 +63,6 @@ core.workflow(
     transformations = [
         metadata.save_author("ORIGINAL_AUTHOR"),
         metadata.expose_label("COPYBARA_INTEGRATE_REVIEW"),
-        metadata.expose_label("GITHUB_PR_NUMBER", new_name = "Closes", separator = DESTINATION_REPO.replace("git@github.com:", " ").replace(".git", "#")),
         metadata.squash_notes(prefix='${GITHUB_PR_TITLE}\n\nImported changes:\n\n', oldest_first = True, show_author=False),
     ] + PR_TRANSFORMATIONS,
 )
