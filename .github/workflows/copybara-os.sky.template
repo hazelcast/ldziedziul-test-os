@@ -61,8 +61,8 @@ core.workflow(
     mode = "CHANGE_REQUEST",
     set_rev_id = False,
     transformations = [
+        metadata.squash_notes(prefix='${GITHUB_PR_TITLE}\n\nImported changes:\n\n', oldest_first = True, show_author=False),
         metadata.save_author("ORIGINAL_AUTHOR"),
         metadata.expose_label("COPYBARA_INTEGRATE_REVIEW"),
-        metadata.squash_notes(prefix='${GITHUB_PR_TITLE}\n\nImported changes:\n\n', oldest_first = True, show_author=False),
     ] + PR_TRANSFORMATIONS,
 )
