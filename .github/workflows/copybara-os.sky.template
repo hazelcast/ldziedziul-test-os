@@ -52,7 +52,7 @@ core.workflow(
         destination_ref = SOT_BRANCH,
         integrates = [],
         title = "${GITHUB_PR_TITLE}",
-        body = "Import of ${GITHUB_PR_URL} \n\n${GITHUB_PR_BODY}",
+        body = "Import of ${GITHUB_PR_URL}\n\n${GITHUB_PR_BODY}",
         update_description = True,
     ),
     destination_files = glob(PUSH_INCLUDE, exclude = PUSH_EXCLUDE),
@@ -64,6 +64,6 @@ core.workflow(
         metadata.save_author("ORIGINAL_AUTHOR"),
         metadata.expose_label("COPYBARA_INTEGRATE_REVIEW"),
         metadata.expose_label("GITHUB_PR_NUMBER", new_name = "Closes", separator = DESTINATION_REPO.replace("git@github.com:", " ").replace(".git", "#")),
-        metadata.squash_notes(prefix='Imported changes:\n\n',oldest_first = True)
+        metadata.squash_notes(prefix='${GITHUB_PR_TITLE}\n\nImported changes:\n\n', oldest_first = True, show_author=False),
     ] + PR_TRANSFORMATIONS,
 )
