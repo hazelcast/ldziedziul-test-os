@@ -62,7 +62,7 @@ core.workflow(
     transformations = [
         metadata.add_header("Import of ${GITHUB_PR_URL}\n\n${GITHUB_PR_BODY}",
             ignore_label_not_found = True,
-        )
+        ),
         metadata.squash_notes(prefix='${GITHUB_PR_TITLE}\n\nImported changes:\n\n', oldest_first = True, show_author=False),
         metadata.expose_label("GITHUB_PR_NUMBER", new_name = "Closes", separator = DESTINATION_REPO.replace("git@github.com:", " ").replace(".git", "#")),
         metadata.save_author("ORIGINAL_AUTHOR"),
