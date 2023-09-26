@@ -29,7 +29,6 @@ core.workflow(
     destination = git.github_destination(
         url = DESTINATION_REPO,
         push = DESTINATION_BRANCH,
-        integrates = [git.integrate(strategy="FAKE_MERGE")],
     ),
     origin_files = glob(PUSH_INCLUDE, exclude = PUSH_EXCLUDE),
     authoring = authoring.pass_thru(default = COMMITTER),
@@ -62,7 +61,7 @@ core.workflow(
     set_rev_id = False,
     transformations = [
         metadata.squash_notes(prefix='${GITHUB_PR_TITLE}\n\nImported changes:\n\n', oldest_first = True, show_author=False),
+        metadata.expose_label("GITHUB_PR_NUMBER", new_name = "Closes", separator = DESTINATION_REPO.replace("git@github.com:", " ").replace(".git", "#")),
         metadata.save_author("ORIGINAL_AUTHOR"),
-        metadata.expose_label("COPYBARA_INTEGRATE_REVIEW"),
     ] + PR_TRANSFORMATIONS,
 )
