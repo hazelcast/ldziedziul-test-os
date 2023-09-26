@@ -51,7 +51,6 @@ core.workflow(
         destination_ref = SOT_BRANCH,
         integrates = [],
         title = "${GITHUB_PR_TITLE}",
-#        body = "Import of ${GITHUB_PR_URL}\n\n${GITHUB_PR_BODY}",
         update_description = True,
     ),
     destination_files = glob(PUSH_INCLUDE, exclude = PUSH_EXCLUDE),
