@@ -6,3 +6,4 @@ Another change in second commit
 third change
 change 3
 change 1
+change 3
