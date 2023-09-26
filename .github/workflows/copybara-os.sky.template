@@ -36,7 +36,7 @@ core.workflow(
     mode = "ITERATIVE",
     transformations = [
         metadata.restore_author("ORIGINAL_AUTHOR", search_all_changes = True),
-#        metadata.expose_label("COPYBARA_INTEGRATE_REVIEW"),
+        metadata.expose_label("COPYBARA_INTEGRATE_REVIEW"),
     ] + PUSH_TRANSFORMATIONS if PUSH_TRANSFORMATIONS else core.reverse(PR_TRANSFORMATIONS),
 )
 
